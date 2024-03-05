@@ -4,4 +4,21 @@
     Kijelentkezés
 </a>
 
-{{ eredmeny }}
+{% for blogpost in posts %}
+<hr>
+    {% if blogpost.user == user %}
+    <form action="{% url 'changebp' %}" method="post">
+        {% csrf_token %}
+        <input type="number" name="id" value="{{ blogpost.id }}" style="display: none;">
+        <input type="text" name="new_content" value="{{ blogpost.content }}">
+        <br>
+        <span>{{ blogpost.created }}</span>
+        <input type="submit" value="Mentés">
+    </form>
+    {% else %}
+    <a href="#">{{ blogpost.user }}</a>
+    <p>{{ blogpost.content }}</p>
+    <span>{{ blogpost.created }}</span>
+    {% endif %}
+<hr>
+{% endfor %}

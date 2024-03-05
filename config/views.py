@@ -2,10 +2,12 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate, logout
+from blogpost.models import BlogPost
 
 @login_required(login_url='login/')
-def index_page(request):  
-    return render(request, 'index.html', {'eredmeny': (21312*123) })
+def index_page(request):
+    posts = BlogPost.objects.all()
+    return render(request, 'index.html', {'posts': posts })
 
 def logout_page(request):
     logout(request)

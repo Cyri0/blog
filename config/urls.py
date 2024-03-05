@@ -17,10 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from . import views
+from blogpost import views as bp_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index_page, name='index'),
     path('login/', views.login_page),
-    path('logout/', views.logout_page, name="logout")
+    path('logout/', views.logout_page, name="logout"),
+    path('api/change/', bp_views.changeBlogpost, name="changebp"),
 ]
