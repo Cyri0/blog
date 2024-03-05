@@ -6,7 +6,7 @@ ha megjelenik a (my-venv) a konzolon akkor működött
 
 `git clone https://github.com/Cyri0/blog.git`
 
-`cd my-venv`
+`cd blog`
 
 `pip install -r requirements.txt`
 
